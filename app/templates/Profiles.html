@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+ 
+ 
+{% block title %} User Listing {% endblock %} 
+ 
+ 
+{% block main %} 
+ 
+ 
+<div style="margin-top:50px;">
+<ul>
+{% for user in users %}
+<li>
+<a href="/profile/{{user.userid}}" method="post">
+
+{{user.username}}
+{{user.userid}}
+</a>
+</li>
+
+{% endfor %}
+</ul>
+</div>
+ 
+{% endblock %} 

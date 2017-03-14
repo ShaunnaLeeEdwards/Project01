@@ -29,13 +29,13 @@ def profile():
         biography = form.biography.data 
           
         #Retrieving and Saving User's photo
-        pic = request.files['photo'] 
-        photo = secure_filename(pic.filename) 
-        pic.save(os.path.join("app/static/uploads", photo)) 
+        photo = request.files['photo'] 
+        photo = secure_filename(photo.filename) 
+        photo.save(os.path.join("app/static/uploads", photo)) 
       
         #Randomly generating the User Identification Number, Username and the date the profile was created 
-        userid = generatedId(first_name, age) 
-        username = generatedUsername(first_name) 
+        userid = random.randint(630000000, 700000000)
+        username = first_name + str(random.randint(10,100)) 
         profile_created_on = datetime.now().strftime("%a, %d %b %Y")
           
         new_user = UserProfile(userid, username, first_name, last_name, biography, gender, age, photo, profile_created_on) 
@@ -44,7 +44,7 @@ def profile():
         db.session.commit() 
       
         flash("Your profile was successfully created!", 'success') 
-        return redirect(url_for('profile')) 
+        return redirect(url_for('login')) 
     flash_er(form)          
     return render_template('signup.html', form=form) 
  
@@ -91,18 +91,5 @@ def get_profile(userid):
                  
                  
 
- 
-def generatedId(fname, age): 
-    uid = [] 
-    for s in fname: 
-        uid.append(str(ord(s))) 
-    uid.append(str(age)) 
-    random.shuffle(uid) 
-    uid = "".join(uid) 
-    return uid[:7] 
-      
-def generatedUsername(fname): 
-    return fname + str(random.randint(10,100)) 
-      
 if __name__ == '__main__': 
     app.run(debug=True,host="0.0.0.0",port="8080") 

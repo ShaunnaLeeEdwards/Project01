@@ -6,7 +6,9 @@
  
 {% block main %} 
  
- 
+<header>
+    <h1 class="page-header">{{users['username']}} LinkUp Profile</h1>
+</header>
 <div class="profile"> 
      <img src="{{ url_for('static', filename='uploads/'+users.photo) }}"></img> 
  
@@ -15,8 +17,8 @@
          <span class="name">{{ users.first_name}} {{ users.last_name }}</span> <br/> 
          <span class="cdate"><b>Profile Created On: </b>{{ users.profile_created_on }}</span> <br/><br/> 
           
-         <b>Usersername:</b> {{ users.usersname }} <br/> 
-         <b>User ID:</b> {{ users.usersid }} <br/> 
+         <b>Username:</b> {{users['username']}} <br/> 
+         <b>User ID:</b> {{ users.userid }} <br/> 
          <b>Gender:</b> {{ users.gender }} <br/> 
          <b>Age:</b> {{ users.age }} <br/><br/> 
           

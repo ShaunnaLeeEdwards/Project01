@@ -14,16 +14,17 @@ class UserProfile(db.Model):
      
      
      def __init__(self, userid, username, first_name, last_name,biography, gender, age, photo,profile_created_on):
-        
-            self.userid=userid
-            self.username=username
-            self.firs_tname=first_name.title()
-            self.last_name=last_name.title()
-            self.age=age
-            self.biography=biography
-            self.gender = gender.upper()
-            self.photo=photo
-            self.profile_created_on=profile_created_on
+          
+          
+          self.userid=userid
+          self.username=username
+          self.first_name=first_name.title()
+          self.last_name=last_name.title()
+          self.age=age
+          self.biography=biography
+          self.gender = gender.upper()
+          self.photo=photo
+          self.profile_created_on=profile_created_on
  
  
      def is_authenticated(self): 
